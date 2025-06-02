@@ -1,4 +1,4 @@
-# Snell-s-Law-Physics-Simulated-Lab
+# Snell's-Law-Physics-Simulated-Lab
 
 ## Inspiration: Our physics teachers taught us to enjoy physics and we learned a variety of concepts through virtual labs, and we want to continue this by allowing people to continue to learn physics through these simulations.
 
