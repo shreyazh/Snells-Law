@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+
+  <title>Optics Simulation</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+
+
+<body>
+  <div class="container">
+    <canvas id="canvasOne">
+    <!--i think this is a bad sign - main canvas1 fallback -->
+    </canvas>
+    
+    <div class="input-group">
+      <label for="Medium 1">Medium 1:</label>
+      <select id="n1" style="padding: 5px; font-size: 14px;" onchange="draw()">
+        <option value="1">Vacuum - 1</option>
+        <option value="1.000273">Air - 1.00273 </option>
+        <option value="1.36">Ethanol - 1.36</option>
+        <option value="1.47">Olive oil - 1.47</option>
+        <option value="1.69">Flint glass (typical) - 1.69</option>
+        <option value="1.77">Sapphire - 1.77</option>
+        <option value="2.15">Cubic zirconia - 2.15</option>
+        <option value="2.65">Moissanite - 2.65</option>
+        <option value="2.28">Potassium niobate (KNbO3) - 2.28</option>
+        <option value="2.4">Zinc oxide - 2.4</option>
+        <option value="3.02">Cinnabar (mercury sulfide) - 3.02</option>
+        <option value="3.42">Silicon - 3.42</option>
+        <option value="3.5">Gallium(III) phosphide - 3.5 </option>
+        <option value="3.927">Gallium(III) arsenide - 3.927</option>
+        <option value="4.05">Germanium - 4.05</option>
+      </select>
+    </div>
+
+    
+    <div class="input-group">
+      <label for="Medium 2">Medium 2:</label>
+      <select id="n2" style="padding: 5px; font-size: 14px;" onchange="draw()">
+        <option value="1">Vacuum - 1</option>
+        <option value="1.000273">Air - 1.00273 </option>
+        <option value="1.36">Ethanol - 1.36</option>
+        <option value="1.47">Olive oil - 1.47</option>
+        <option value="1.69">Flint glass (typical) - 1.69</option>
+        <option value="1.77">Sapphire - 1.77</option>
+        <option value="2.15">Cubic zirconia - 2.15</option>
+        <option value="2.65">Moissanite - 2.65</option>
+        <option value="2.28">Potassium niobate (KNbO3) - 2.28</option>
+        <option value="2.4">Zinc oxide - 2.4</option>
+        <option value="3.02">Cinnabar (mercury sulfide) - 3.02</option>
+        <option value="3.42">Silicon - 3.42</option>
+        <option value="3.5">Gallium(III) phosphide - 3.5 </option>
+        <option value="3.927">Gallium(III) arsenide - 3.927</option>
+        <option value="4.05">Germanium - 4.05</option>
+      </select>
+    </div>
+  
+    <div class="input-group">
+      <label for="Medium 2 (index of refraction)" style="margin-right: 10px;">Medium 3:</label>
+      <input type="number" id="n3" min="0" step="0.1" value="1.5" style="width: 60px; padding: 5px; font-size: 14px;"
+        onchange="draw()">
+    </div>
+  
+    <div class="input-group">
+      <label for="angle" style="margin-right: 10px;">Incident Angle (degrees): </label>
+      <input type="number" id="angle" min="-90" step="1" max="90" value="10"
+        style="width: 60px; padding: 5px; font-size: 14px;" onchange="draw()">
+    </div>
+  
+    <div class="input-group">
+      <button onclick="draw()">Run Simulation</button>
+    </div>
+  </div>
+    
+  <head>
+    <title>Snell's Law Questions</title>
+    <style>
+        .question {
+            margin-bottom: 20px;
+        }
+        .question h3 {
+            margin-bottom: 10px;
+        }
+        .answer {
+            display: none;
+        }
+        .show-answers {
+            margin-top: 20px;
+        }
+    </style>
+    <script>
+        function toggleAnswers() {
+            var answers = document.getElementsByClassName("answer");
+            var button = document.getElementById("toggle-answers-button");
+
+            for (var i = 0; i < answers.length; i++) {
+                if (answers[i].style.display === "none") {
+                    answers[i].style.display = "block";
+                    button.innerText = "Hide Answers";
+                } else {
+                    answers[i].style.display = "none";
+                    button.innerText = "Show Answers";
+                }
+            }
+        }
+    </script>
+</head>
+  
+<body>
+    <div class="question">
+        <h3>Question 1:</h3>
+        <p>What happens to the direction of light when it passes from a medium with a higher refractive index to a medium with a lower refractive index?</p>
+        <p class="answer">Answer: When light passes from a medium with a higher refractive index to a medium with a lower refractive index, it undergoes refraction. Refraction is the bending of light as it passes through different mediums. The direction of light changes because it travels at different speeds in different mediums. As the speed of light changes, it bends towards the normal, which is a line perpendicular to the surface of separation between the two mediums.</p>
+        <textarea name="answer1"></textarea>
+    </div>
+
+    <div class="question">
+        <h3>Question 2:</h3>
+        <p>How does the speed of light change when it enters a medium with a higher refractive index? What about in the opposite direction?</p>
+        <p class="answer">Answer: When light enters a medium with a higher refractive index, such as from air to water, its speed decreases. This decrease in speed is because the refractive index is a measure of how much slower light travels in a medium compared to a vacuum. In the opposite direction, when light goes from a medium with a higher refractive index to a lower refractive index, such as from water to air, its speed increases.</p>
+        <textarea name="answer2"></textarea>
+    </div>
+
+    <div class="question">
+        <h3>Question 3:</h3>
+        <p>In Snell's law, what is the relationship between the angle of incidence, the angle of refraction, and the refractive indices of the two media?</p>
+        <p class="answer">Answer: Snell's law relates the angle of incidence, the angle of refraction, and the refractive indices of the two media. According to Snell's law, the ratio of the sine of the angle of incidence to the sine of the angle of refraction is equal to the ratio of the refractive indices of the two media. Mathematically, it can be represented as n1sin(θ1) = n2sin(θ2), where n1 and n2 are the refractive indices of the two media, and θ1 and θ2 are the angles of incidence and refraction, respectively.</p>
+        <textarea name="answer3"></textarea>
+    </div>
+
+    <div class="question">
+        <h3>Question 4:</h3>
+        <p>How does the wavelength of light change when it enters a medium with a higher refractive index?</p>
+        <p class="answer">Answer: When light enters a medium with a higher refractive index, such as from air to glass, its wavelength decreases. This phenomenon is known as wavelength reduction or wavelength shortening. The reduction in wavelength is accompanied by a decrease in the speed of light. The relationship between the wavelength and refractive index is inversely proportional: as the refractive index increases, the wavelength of light decreases.</p>
+        <textarea name="answer4"></textarea>
+    </div>
+
+    <div class="question">
+        <h3>Question 5:</h3>
+        <p>How does the refractive index of a medium affect the bending of light in Snell's law?</p>
+        <p class="answer">Answer: The refractive index of a medium affects the bending of light in Snell's law. The refractive index determines how much the light will deviate from its original path when it enters a different medium. A higher refractive index means that light will experience a greater change in direction or bending. This bending of light is a result of the change in speed and wavelength as light passes from one medium to another.</p>
+        <textarea name="answer5"></textarea>
+    </div>
+
+    <div class="question">
+        <h3>Question 6:</h3>
+        <p>An incidence ray with an angle of 7° travels through a vacuum into an unknown medium. The refraction angle is 3.249°, find the Refraction Index of the unknown medium. What is the most likely medium based on the simulation?</p>
+        <p class="answer">Answer: To find the refractive index of the unknown medium, we can use Snell's law. Snell's law states that the ratio of the sine of the angle of incidence to the sine of the angle of refraction is equal to the ratio of the refractive indices of the two media. In this case, we have the angle of incidence (7°) and the angle of refraction (3.249°). By rearranging Snell's law equation, we can calculate the refractive index of the unknown medium. Based on the simulation and the calculated refractive index, we can determine the most likely medium is Cubic zirconia.</p>
+        <textarea name="answer6"></textarea>
+    </div>
+
+    <div class="question">
+        <h3>Question 7:</h3>
+        <p>A ray with an incidence angle of 15° degrees travels between two mediums, X and Y. Assuming that the refraction index of medium X is 2.5, and the refraction index of medium Y is 1.4, calculate the refracted angle. Snell's Law: n1sin𝛳1=n2sin𝛳2</p>
+        <p class="answer">Answer: Given the incidence angle (15 degrees), the refractive index of medium X (2.5), and the refractive index of medium Y (1.4), we can use Snell's law to calculate the refracted angle. Snell's law states that the product of the refractive index and the sine of the angle of incidence is equal to the product of the refractive index and the sine of the angle of refraction. By rearranging the equation, we can solve for the refracted angle using the given values and we get 27.53°.</p>
+        <textarea name="answer7"></textarea>
+    </div>
+
+    <div class="question">
+        <h3>Question 8:</h3>
+        <p>Based on Snell’s law, why do some incidence rays end up reflecting off of other mediums, rather than continuing through them?</p>
+        <p class="answer">Answer: According to Snell's law, when an incidence ray encounters a medium with a lower refractive index at a certain angle, the angle of refraction may become larger than 90 degrees. In such cases, the refracted ray cannot pass through the medium and instead gets reflected back. This phenomenon is known as total internal reflection. Total internal reflection occurs when the angle of incidence exceeds the critical angle, which is determined by the refractive indices of the two media involved. The reflected ray bounces off the boundary between the two media, allowing us to observe the reflection of light.</p>
+        <textarea name="answer8"></textarea>
+    </div>
+
+    <button id="toggle-answers-button" class="show-answers" onclick="toggleAnswers()">Show Answers</button>
+
+    <script>
+        function toggleAnswers() {
+            var answers = document.getElementsByClassName("answer");
+            var button = document.getElementById("toggle-answers-button");
+
+            for (var i = 0; i < answers.length; i++) {
+                if (answers[i].style.display === "none") {
+                    answers[i].style.display = "block";
+                    button.innerText = "Hide Answers";
+                } else {
+                    answers[i].style.display = "none";
+                    button.innerText = "Show Answers";
+                }
+            }
+        }
+    </script>
+</body>
+  
+<!--  
+  <canvas id="canvasTwo">
+  i think this is a bad sign - main canvas2 fallback
+</canvas>
+  -->
+
+<script src="script.js"></script>
+<!-- Focus Questions (To be coded in later becuz I cant code) 1. Using the given refraction values for the mediums tested in this  -->
+
+</html>
